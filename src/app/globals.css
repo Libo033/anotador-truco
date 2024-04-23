@@ -7,3 +7,9 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+.bg {
+  background: url("https://res.cloudinary.com/dsuydyqgz/image/upload/v1713883777/01-varios/nbthuebkf7b7koj4epyx.png");
+  background-position: center;
+  background-size: cover;
+}
