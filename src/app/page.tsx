@@ -3,10 +3,12 @@ import ButtonGroup from "@/components/ButtonGroup";
 import Configuration from "@/components/Configuration";
 import FirstFifteen from "@/components/FirstFifteen";
 import LastFifteen from "@/components/LastFifteen";
+import { ConfigContext } from "@/context/ConfigContext";
 import { Button, Modal } from "@mui/material";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 export default function Home() {
+  const { showNumbers, simpleBackground } = useContext(ConfigContext);
   const [config, setConfig] = useState(false);
   const [ellos, setEllos] = useState<number>(0);
   const [nos, setNos] = useState<number>(0);
@@ -32,7 +34,11 @@ export default function Home() {
   };
 
   return (
-    <div className="m-auto bg max-w-lg w-full min-h-screen relative">
+    <div
+      className={`m-auto bg-zinc-700 max-w-lg w-full min-h-screen relative ${
+        !simpleBackground && " bg"
+      }`}
+    >
       <Modal open={config} onClose={handleClose} closeAfterTransition>
         <Configuration handleClose={handleClose} />
       </Modal>

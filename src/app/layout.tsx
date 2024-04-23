@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Lato } from "next/font/google";
 import "./globals.css";
+import { ConfigContextProvider } from "@/context/ConfigContext";
 
 const lato = Lato({
   subsets: ["latin"],
@@ -19,7 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={lato.className}>{children}</body>
+      <body className={lato.className}>
+        <ConfigContextProvider>{children}</ConfigContextProvider>
+      </body>
     </html>
   );
 }
