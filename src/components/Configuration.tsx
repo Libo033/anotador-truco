@@ -1,12 +1,17 @@
+"use client";
+import { ConfigContext } from "@/context/ConfigContext";
 import { FormControlLabel, Switch } from "@mui/material";
 import Image from "next/image";
-import React from "react";
+import React, { ChangeEvent, useContext } from "react";
 
 interface ConfigProps {
   handleClose: () => void;
 }
 
 const Configuration: React.FC<ConfigProps> = ({ handleClose }) => {
+  const { handleShowNumbers, handleSimpleBackground } =
+    useContext(ConfigContext);
+
   return (
     <div className="bg-white m-6 p-4 rounded-lg flex flex-col relative">
       <Image
@@ -23,12 +28,27 @@ const Configuration: React.FC<ConfigProps> = ({ handleClose }) => {
       <div>
         <div>
           <FormControlLabel
-            control={<Switch />}
+            control={
+              <Switch
+                onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                  handleShowNumbers(event.target.checked)
+                }
+              />
+            }
             label="Mostrar puntaje en numeros."
           />
         </div>
         <div>
-          <FormControlLabel control={<Switch />} label="Fondo simple." />
+          <FormControlLabel
+            control={
+              <Switch
+                onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                  handleSimpleBackground(event.target.checked)
+                }
+              />
+            }
+            label="Fondo simple."
+          />
         </div>
         <div className="mt-8 flex justify-center">
           <a
