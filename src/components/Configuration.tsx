@@ -9,8 +9,12 @@ interface ConfigProps {
 }
 
 const Configuration: React.FC<ConfigProps> = ({ handleClose }) => {
-  const { handleShowNumbers, handleSimpleBackground } =
-    useContext(ConfigContext);
+  const {
+    showNumbers,
+    simpleBackground,
+    handleShowNumbers,
+    handleSimpleBackground,
+  } = useContext(ConfigContext);
 
   return (
     <div className="bg-white m-6 p-4 rounded-lg flex flex-col relative">
@@ -30,6 +34,7 @@ const Configuration: React.FC<ConfigProps> = ({ handleClose }) => {
           <FormControlLabel
             control={
               <Switch
+                checked={showNumbers}
                 onChange={(event: ChangeEvent<HTMLInputElement>) =>
                   handleShowNumbers(event.target.checked)
                 }
@@ -42,6 +47,7 @@ const Configuration: React.FC<ConfigProps> = ({ handleClose }) => {
           <FormControlLabel
             control={
               <Switch
+                checked={simpleBackground}
                 onChange={(event: ChangeEvent<HTMLInputElement>) =>
                   handleSimpleBackground(event.target.checked)
                 }
