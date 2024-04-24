@@ -8,6 +8,11 @@
   box-sizing: border-box;
 }
 
+h1 {
+  -webkit-text-stroke: 0.51px white;
+  text-shadow: -5px 3px black;
+}
+
 .bg {
   background: url("https://res.cloudinary.com/dsuydyqgz/image/upload/v1713886647/01-varios/bxckodvwchiah3qggh3n.jpg");
   background-position: center;

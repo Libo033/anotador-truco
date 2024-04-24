@@ -5,7 +5,13 @@ import FirstFifteen from "@/components/FirstFifteen";
 import LastFifteen from "@/components/LastFifteen";
 import { ConfigContext } from "@/context/ConfigContext";
 import { Button, Modal } from "@mui/material";
+import { Sedan } from "next/font/google";
 import { useContext, useState } from "react";
+
+const sedan = Sedan({
+  subsets: ["latin"],
+  weight: "400",
+});
 
 export default function Home() {
   const { showNumbers, simpleBackground } = useContext(ConfigContext);
@@ -39,15 +45,35 @@ export default function Home() {
         !simpleBackground && " bg"
       }`}
     >
+      <h1
+        className={
+          "text-center text-[#74abdf] text-4xl font-bold pt-6 " +
+          sedan.className
+        }
+      >
+        ANOTADOR TRUCO
+      </h1>
       <Modal open={config} onClose={handleClose} closeAfterTransition>
         <Configuration handleClose={handleClose} />
       </Modal>
       <div className="w-full pt-6 flex justify-around">
         <div className="bg-white px-6 py-2 rounded-xl border shadow-lg font-semibold">
           Nosotros
+          {showNumbers && (
+            <>
+              <br />
+              <p className="text-center font-lg">{nos}</p>
+            </>
+          )}
         </div>
         <div className="bg-white px-6 py-2 rounded-xl border shadow-lg font-semibold">
           Ellos
+          {showNumbers && (
+            <>
+              <br />
+              <p className="text-center font-lg">{ellos}</p>
+            </>
+          )}
         </div>
       </div>
       <div className="pt-6 flex justify-around">
