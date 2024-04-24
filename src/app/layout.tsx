@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Lato } from "next/font/google";
 import "./globals.css";
 import { ConfigContextProvider } from "@/context/ConfigContext";
+import { Analytics } from "@vercel/analytics/next";
 
 const lato = Lato({
   subsets: ["latin"],
@@ -21,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={lato.className}>
+        <Analytics mode="production" />
         <ConfigContextProvider>{children}</ConfigContextProvider>
       </body>
     </html>
