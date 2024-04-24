@@ -6,7 +6,7 @@ import LastFifteen from "@/components/LastFifteen";
 import { ConfigContext } from "@/context/ConfigContext";
 import { Button, Modal } from "@mui/material";
 import { Sedan } from "next/font/google";
-import { useContext, useState } from "react";
+import { SetStateAction, useContext, useState } from "react";
 
 const sedan = Sedan({
   subsets: ["latin"],
@@ -84,12 +84,11 @@ export default function Home() {
         <LastFifteen user={nos} />
         <LastFifteen user={ellos} />
       </div>
-      <ButtonGroup handleSubtract={handleSubtract} handleAdd={handleAdd} />
-      <div className="pt-4 px-6 pb-6">
-        <Button variant="contained" onClick={() => setConfig(true)} fullWidth>
-          Configuracion
-        </Button>
-      </div>
+      <ButtonGroup
+        handleSubtract={handleSubtract}
+        handleAdd={handleAdd}
+        setConfig={setConfig}
+      />
     </div>
   );
 }
